@@ -6,8 +6,14 @@ import ImageIcon from "@mui/icons-material/Image";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import EventIcon from "@mui/icons-material/Event";
 import CalendarViewDayIcon from "@mui/icons-material/CalendarViewDay";
+import Post from "./Post";
+import { useState } from "react";
 
 function Feed() {
+  const [posts, setPosts] = useState([]);
+  const sendPostHandler = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="feed">
       <div className="feed__inputContainer">
@@ -15,7 +21,9 @@ function Feed() {
           <CreateIcon />
           <form>
             <input type="text" name="" id="" />
-            <button type="submit">Send</button>
+            <button onClick={sendPostHandler} type="submit">
+              Send
+            </button>
           </form>
         </div>
         <div className="feed__inputOptions">
@@ -29,8 +37,15 @@ function Feed() {
           />
         </div>
       </div>
-
-      {/* Posts */}
+      {posts.map((post) => {
+        return post;
+      })}
+      <Post
+        name="Harsh Patel"
+        description="This is a test"
+        message="Wow this worked"
+        photoUrl=""
+      ></Post>
     </div>
   );
 }
